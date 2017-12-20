@@ -1,0 +1,27 @@
+{
+  "name": "swagger-ref-comp",
+  "version": "1.0.0",
+  "description": "Compile Swagger specification with external references into a single file.",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:BlueOakJS/swagger-ref-compiler.git"
+  },
+  "bin": "./bin/swaggerRefComp.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Swagger",
+    "references"
+  ],
+  "author": "PointSource LLC <github@pointsource.com>",
+  "contributors": [
+    "Danny Levenson <danny.levenson@pointsource.com>"
+  ],  
+  "license": "MIT",
+  "dependencies": {
+    "commander": "^2.12.2",
+    "swagger-parser": "^4.0.1",
+    "tmp": "0.0.33"
+  }
+}
