@@ -1,7 +1,7 @@
 {
   "name": "openapi-reference-compiler",
   "version": "1.0.0",
-  "description": "Compile Swagger specification with external references into a single file.",
+  "description": "Compile OpenAPI specification with external references into a single file.",
   "repository": {
     "type": "git",
     "url": "git@github.com:BlueOakJS/openapi-reference-compiler.git"
@@ -12,7 +12,7 @@
   },
   "keywords": [
     "Swagger",
-    "OpenAPI"
+    "OpenAPI",
     "references"
   ],
   "author": "PointSource LLC <github@pointsource.com>",
