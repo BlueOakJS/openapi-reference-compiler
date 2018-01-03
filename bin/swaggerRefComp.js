@@ -12,6 +12,7 @@ cmdr.version('1.0.0')
     .option('-i, --inputFile <inputFile>', 'main Swagger API file')
     .option('-o, --outputFile <outputFile>', 'where output should be written')
     .option('-r, --refDirs <refDirs>', 'list of reference directories separated by \':\'')
+    .option('-v, --verbose', 'verbose output')
     .option('-t, --test', 'just testing')
     .parse(process.argv);
 
@@ -60,17 +61,19 @@ if (cmdr.refDirs) {
 if (cmdr.test) {
     console.log('opts: ', JSON.stringify(opts, null, 2));
 } else {
-    console.log('Compiling references...');
+    if (cmdr.verbose) {
+        console.log('Compiling references...');
+        console.log('ref compiler temp file:', opts.refcOutfile);
+    }
+
     compileSpec(opts);
     
-    console.log('Parsing and writing full Swagger...');
-    // console.log('   ref compiler temp file:', opts.refcOutfile);
     parser.bundle(opts.refcOutfile)
         .then(function (swaggerJSON) {
             var fd = fs.openSync(opts.outFile, 'w');
             fs.writeSync(fd, JSON.stringify(swaggerJSON, null, 4));
             fs.closeSync(fd);
-            console.log('JSON written to', opts.outFile);
+            console.log('JSON for Swagger written to', opts.outFile);
         });
 }
 
@@ -91,9 +94,11 @@ function compileSpec(swaggerCfg) {
  *  e.g. ['v2/public', 'v2/private/mysf']
  */
 function compileYAMLReferences(swaggerDir, baseSpecFile, refDirs, outFile) {
-    console.log('swaggerDir:', swaggerDir);
-    console.log('baseSpecFile:', baseSpecFile);
-    console.log('refDirs:', refDirs);
+    if (cmdr.verbose) {        
+        console.log('swaggerDir:', swaggerDir);
+        console.log('baseSpecFile:', baseSpecFile);
+        console.log('refDirs:', refDirs);
+    }
     var baseSpecFilePath = path.join(swaggerDir, baseSpecFile);
     var resourcesChunk = '';
     var fileData = fs.readFileSync(baseSpecFilePath, 'utf8');
