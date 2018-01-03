@@ -73,7 +73,7 @@ if (cmdr.test) {
             var fd = fs.openSync(opts.outFile, 'w');
             fs.writeSync(fd, JSON.stringify(swaggerJSON, null, 4));
             fs.closeSync(fd);
-            console.log('JSON for Swagger written to', opts.outFile);
+            console.log('JSON for OpenAPI written to', opts.outFile);
         });
 }
 
