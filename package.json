@@ -6,7 +6,9 @@
     "type": "git",
     "url": "git@github.com:BlueOakJS/openapi-reference-compiler.git"
   },
-  "bin": "./bin/refc.js",
+  "bin": {
+    "refc": "./bin/refc.js"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
