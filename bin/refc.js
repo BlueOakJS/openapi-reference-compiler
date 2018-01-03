@@ -8,8 +8,8 @@ var cmdr = require('commander'),
     isWindows = /^win/.test(process.platform);
 
 cmdr.version('1.0.0')
-    .description('Merge Swagger definitions into a single file resolving references')
-    .option('-i, --inputFile <inputFile>', 'main Swagger API file')
+    .description('Merge OpenAPI definitions into a single file resolving references')
+    .option('-i, --inputFile <inputFile>', 'main OpenAPI file')
     .option('-o, --outputFile <outputFile>', 'where output should be written')
     .option('-r, --refDirs <refDirs>', 'list of reference directories separated by \':\'')
     .option('-v, --verbose', 'verbose output')
