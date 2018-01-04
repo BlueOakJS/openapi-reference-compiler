@@ -2,6 +2,7 @@
 
 var cmdr = require('commander'),
     fs = require('fs'),
+    mkdirp = require('mkdirp'),
     path = require('path'),
     parser = require('swagger-parser'),
     tmp = require('tmp'),
@@ -58,8 +59,10 @@ if (cmdr.refDirs) {
     }
 }
 
+var outDir = path.dirname(opts.outFile);
 if (cmdr.test) {
     console.log('opts: ', JSON.stringify(opts, null, 2));
+    console.log('outDir:', outDir);
 } else {
     if (cmdr.verbose) {
         console.log('Compiling references...');
@@ -70,6 +73,7 @@ if (cmdr.test) {
     
     parser.bundle(opts.refcOutfile)
         .then(function (swaggerJSON) {
+            mkdirp.sync(outDir);
             var fd = fs.openSync(opts.outFile, 'w');
             fs.writeSync(fd, JSON.stringify(swaggerJSON, null, 4));
             fs.closeSync(fd);

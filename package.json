@@ -20,10 +20,11 @@
   "author": "PointSource LLC <github@pointsource.com>",
   "contributors": [
     "Danny Levenson <danny.levenson@pointsource.com>"
-  ],  
+  ],
   "license": "MIT",
   "dependencies": {
     "commander": "^2.12.2",
+    "mkdirp": "^0.5.1",
     "swagger-parser": "^4.0.1",
     "tmp": "0.0.33"
   }
