@@ -1,6 +1,6 @@
 {
   "name": "openapi-reference-compiler",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Compile OpenAPI specification with external references into a single file.",
   "repository": {
     "type": "git",
