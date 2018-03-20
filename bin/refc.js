@@ -78,6 +78,10 @@ if (cmdr.test) {
             fs.writeSync(fd, JSON.stringify(swaggerJSON, null, 4));
             fs.closeSync(fd);
             console.log('JSON for OpenAPI written to', opts.outFile);
+        }).catch(function (err) {
+            console.log('***** Error parsing swagger:', err.name);
+            console.log(err.message);
+            console.log(err.stack);
         });
 }
 
